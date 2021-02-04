@@ -112,7 +112,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2021-01-21</span>
-            <span class="time">15:57:02</span>
+            <span class="time">15:00:34</span>
           </span>
           
           <!--  Categories  -->
@@ -138,39 +138,49 @@
 <a id="more"></a>
 
 <h3 id="层次分析法（Analytic-Hierarchy-Process）"><a href="#层次分析法（Analytic-Hierarchy-Process）" class="headerlink" title="层次分析法（Analytic Hierarchy Process）"></a>层次分析法（Analytic Hierarchy Process）</h3><h4 id="目的和对象"><a href="#目的和对象" class="headerlink" title="目的和对象"></a>目的和对象</h4><ul>
-<li><p>复杂、模糊的问题作出决策的简易方法</p>
+<li><p><strong>决策</strong>是指在<strong>面临多种方案</strong>时需要依据一定的标准选择某一种方案。</p>
 </li>
-<li><p>特点：定量分析</p>
+<li><p>对象：各主观选择起相当大的作用，各因素重要性<strong>难以量化</strong></p>
 </li>
+</ul>
+<blockquote>
+<p> 复杂、模糊的问题作出决策的简易方法</p>
+</blockquote>
+<ul>
+<li>特点：定性和定量结合分析</li>
 </ul>
 <h4 id="基本原理和步骤"><a href="#基本原理和步骤" class="headerlink" title="基本原理和步骤"></a>基本原理和步骤</h4><p><strong>（i）建立<em>递阶层次结构模型</em>  ：反应因素之间的关系（关键）</strong></p>
 <ul>
-<li>最高层：预定目标、理想结果</li>
-<li>中间层：考虑的各个因素</li>
-<li>最底层：各个措施、决策方案</li>
+<li>最高层：预定<strong>目标</strong>、理想结果</li>
+<li>中间层：考虑的各个因素(<strong>准测</strong>)</li>
+<li>最底层：各个措施、决策<strong>方案</strong></li>
 </ul>
 <p><strong>（ii）构造出各层次中的所有<em>判断矩阵</em>；</strong></p>
 <ul>
-<li>对象：因子x，某因素Z，xi和xj的影响之比aij</li>
-<li>标度决定其重要性（主观因素）</li>
+<li>对象：因子x，某因素Z，xi和xj的<strong>影响之比</strong>aij（而不是具体某个权重的大小）<ul>
+<li>标度决定其重要性（主观因素影响比较大）</li>
 <li>n个因子需要 n（n-1）/2的两两判断</li>
-<li>正互反对称矩阵</li>
-</ul>
-<p><strong>（iii）层次单排序及一致性检验；</strong>（扩展细细了解）</p>
-<ul>
-<li>层次单排序：重要性排序权值</li>
-<li>一致矩阵<ul>
-<li>特点：正互反对称、一致，转置后一致、任意两行成比例</li>
+<li>构建正互反对称矩阵——所需要的判断矩阵<ul>
+<li>准则层</li>
+<li>方案层</li>
 </ul>
 </li>
-<li>检验</li>
 </ul>
-<p><strong>（iv）层次总排序及一致性检验。 下面分别说明这四个步骤    的实现过程。</strong></p>
+</li>
+</ul>
+<p><strong>（iii）层次单排序及一致性检验；</strong>（代码执行，自己不需要细细了解）</p>
+<p>*<em>（iv）层次总排序及一致性检验。 *</em></p>
+<p><strong>(v)将权重累成占比后求和，最后得到各个方案的结果大小</strong></p>
 <h4 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h4><ul>
 <li>依赖于经验、主观因素</li>
 <li>比较粗糙、精度不够</li>
 </ul>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">disp</span>(<span class="string">'请输入A矩阵'</span>); <span class="comment">% 显示</span></span><br><span class="line">A=input(<span class="string">'A='</span>);</span><br><span class="line">[n,n]=<span class="built_in">size</span>(A); <span class="comment">% 这句话有点不太明白</span></span><br><span class="line">x=<span class="built_in">ones</span>(n,<span class="number">100</span>);</span><br><span class="line">y=<span class="built_in">ones</span>(n,<span class="number">100</span>);</span><br><span class="line">m=<span class="built_in">zeros</span>(<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">m(<span class="number">1</span>)=<span class="built_in">max</span>(x(:,<span class="number">1</span>));</span><br><span class="line">y(:,<span class="number">1</span>)=x(:,<span class="number">1</span>);</span><br><span class="line">x(:,<span class="number">2</span>)=A*y(:,<span class="number">1</span>);</span><br><span class="line">m(<span class="number">2</span>)=<span class="built_in">max</span>(x(:,<span class="number">2</span>));</span><br><span class="line">y(:,<span class="number">2</span>)=x(:,<span class="number">2</span>)/m(<span class="number">2</span>);</span><br><span class="line">p=<span class="number">0.0001</span>;<span class="built_in">i</span>=<span class="number">2</span>;k=<span class="built_in">abs</span>(m(<span class="number">2</span>)-m(<span class="number">1</span>));</span><br><span class="line"><span class="keyword">while</span>  k&gt;p</span><br><span class="line">  <span class="built_in">i</span>=<span class="built_in">i</span>+<span class="number">1</span>;</span><br><span class="line">  x(:,<span class="built_in">i</span>)=A*y(:,<span class="built_in">i</span><span class="number">-1</span>);</span><br><span class="line">  m(<span class="built_in">i</span>)=<span class="built_in">max</span>(x(:,<span class="built_in">i</span>));</span><br><span class="line">  y(:,<span class="built_in">i</span>)=x(:,<span class="built_in">i</span>)/m(<span class="built_in">i</span>);</span><br><span class="line">  k=<span class="built_in">abs</span>(m(<span class="built_in">i</span>)-m(<span class="built_in">i</span><span class="number">-1</span>));</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">a=sum(y(:,<span class="built_in">i</span>));</span><br><span class="line">w=y(:,<span class="built_in">i</span>)/a;</span><br><span class="line">t=m(<span class="built_in">i</span>);</span><br><span class="line"><span class="built_in">disp</span>(w); <span class="comment">% 显示其权数</span></span><br><span class="line">CI=(t-n)/(n<span class="number">-1</span>);RI=[<span class="number">0</span> <span class="number">0</span> <span class="number">0.52</span> <span class="number">0.89</span> <span class="number">1.12</span> <span class="number">1.26</span> <span class="number">1.36</span> <span class="number">1.41</span> <span class="number">1.46</span> <span class="number">1.49</span> <span class="number">1.52</span> <span class="number">1.54</span> <span class="number">1.56</span> <span class="number">1.58</span> <span class="number">1.59</span>];</span><br><span class="line">CR=CI/RI(n);</span><br><span class="line"><span class="keyword">if</span> CR&lt;<span class="number">0.10</span></span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">'此矩阵经检验后可以被接受!'</span>);</span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">'CI='</span>);<span class="built_in">disp</span>(CI);</span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">'CR='</span>);<span class="built_in">disp</span>(CR);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用时需要将文中的几个n的量改为具体的值</p>
+</blockquote>
+
         </div>
       </div>
     </div>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="GHB">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="神经网络的学习"/>
+  <meta property="og:description" content="Welcome to GHB&#39;s blog." />
+  <meta property="og:site_name" content="GHBのBlog"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="GHBのBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>GHBのBlog</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">神经网络的学习</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/Ether-Fish" target="_blank" rel="noopener">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:3052829319@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/text-t">
+                  
+                  text
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By GHB</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2021-02-03</span>
+            <span class="time">15:00:34</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/deep-learning/">deep learning</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/note/">#note</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>从训练数据集中自动获取最优权重参数的过程</p>
+<a id="more"></a>
+
+<h2 id="神经网络的学习"><a href="#神经网络的学习" class="headerlink" title="神经网络的学习"></a>神经网络的学习</h2><h3 id="从数据中学习"><a href="#从数据中学习" class="headerlink" title="从数据中学习"></a>从数据中学习</h3><blockquote>
+<p>线性可分问题可以通过数据自动学习，但非线性问题不能</p>
+</blockquote>
+<h4 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h4><p>三种方式</p>
+<ul>
+<li><p>主观算法</p>
+</li>
+<li><p>机器学习</p>
+<ul>
+<li>提取<strong>特征量</strong>——可以从输入的数据中准确提取本质数据的转换器<ul>
+<li>常用：SIFT、SURF、HOG</li>
+</ul>
+</li>
+<li>机器学习：从机器收集的数据中找到规律性。<ul>
+<li>常用：SVM KNN</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>特征量仍然为人设计，根据问题而定</p>
+</blockquote>
+<ul>
+<li>深度学习（又称为端到端的机器学习）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A(数据)--&gt;B(人想到的算法)</span><br><span class="line">A--&gt;C(认为设定的特征量)</span><br><span class="line">A--&gt;D(神经网络\深度学习)</span><br><span class="line">C--&gt;E(机器学习)</span><br><span class="line">B--&gt;F(答案)</span><br><span class="line">E--&gt;F</span><br><span class="line">D--&gt;F</span><br></pre></td></tr></table></figure>
+
+<h4 id="训练数据-监督数据-和测试数据"><a href="#训练数据-监督数据-和测试数据" class="headerlink" title="训练数据(监督数据)和测试数据"></a>训练数据(监督数据)和测试数据</h4><ul>
+<li>训练——寻找最优参数  </li>
+<li>测试——评价<strong>泛化能力</strong>（处理未被观察的数据）</li>
+</ul>
+<p><strong>过拟合</strong>：只对某个数据集过度拟合</p>
+<h3 id="损失函数-loss-function"><a href="#损失函数-loss-function" class="headerlink" title="损失函数(loss function)"></a>损失函数(loss function)</h3><ul>
+<li>指标化为线索寻找最优权重参数</li>
+<li>表示不拟合的程度，目标：损失函数的值最小</li>
+<li>一个数据对应一个损失函数，一批数据可以求其损失函数平均值来整体考虑</li>
+</ul>
+<p>以下是两个常用的损失函数</p>
+<h4 id="均方误差-mean-squared-error"><a href="#均方误差-mean-squared-error" class="headerlink" title="均方误差(mean squared error)"></a>均方误差(mean squared error)</h4><p>$$<br>E = \frac{1}{2}\sum\limits_k(y_k-t_k)^2<br>$$</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$y_k$</td>
+<td align="center">神经网络的输出</td>
+</tr>
+<tr>
+<td align="center">$t_k$</td>
+<td align="center">监督数据</td>
+</tr>
+<tr>
+<td align="center">k</td>
+<td align="center">数据的维度</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>one-hot表示形式</strong></li>
+</ul>
+<h4 id="交叉熵误差-cross-entropy-error"><a href="#交叉熵误差-cross-entropy-error" class="headerlink" title="交叉熵误差(cross entropy error)"></a>交叉熵误差(cross entropy error)</h4><p>$$<br>E = - \sum_kt_k\ln y_k<br>$$</p>
+<ul>
+<li>one-hot表示下只计算对应正确标签输出的自然对数</li>
+</ul>
+<blockquote>
+<p>文中Python程序实现函数的设计中考虑了负无限大的发生</p>
+</blockquote>
+<h4 id="mini-batch-学习"><a href="#mini-batch-学习" class="headerlink" title="mini-batch 学习"></a>mini-batch 学习</h4><ul>
+<li><p>平均损失函数——与数据的数量无关<br>$$<br>E=-\frac1N\sum_n\sum_kt_{nk}\log y_{nk}<br>$$</p>
+</li>
+<li><p>交叉熵误差的实现</p>
+</li>
+</ul>
+<h4 id="损失函数的意义"><a href="#损失函数的意义" class="headerlink" title="损失函数的意义"></a>损失函数的意义</h4><ol>
+<li><p><strong>为什么不用识别精度？</strong></p>
+<p>识别精度的函数是离散的，无法利用导数进行神经网络的学习——寻找最优权重参数。</p>
+</li>
+<li><p><strong>那么损失函数的优点是什么呢？</strong></p>
+<p>激活函数的sigmoid函数进行处理后，值是连续变化的，而且导数均大于0</p>
+</li>
+</ol>
+<h3 id="数值微分"><a href="#数值微分" class="headerlink" title="数值微分"></a>数值微分</h3><h4 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h4><ul>
+<li>某个瞬间的变化量</li>
+<li>数值微分<ul>
+<li>中心差商：精度比向前向后差商高</li>
+<li>注意<strong>舍入误差</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="偏导数"><a href="#偏导数" class="headerlink" title="偏导数"></a>偏导数</h4><h4 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h4><ul>
+<li>偏导数汇总而成的向量称为梯度</li>
+<li>指向函数值减小最多的方向</li>
+</ul>
+<h5 id="梯度法"><a href="#梯度法" class="headerlink" title="梯度法"></a>梯度法</h5><ul>
+<li>鞍点：某个方向是极大值，某个方向是极小值的电</li>
+<li>梯度下降法、梯度上升法</li>
+<li>数学表示：</li>
+</ul>
+<p>$$<br>x_0= x_0 - \eta \frac{\partial f}{\partial x_0}\<br>x_1= x_1 - \eta \frac{\partial f}{\partial x_1}<br>$$</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$x_0、 x_1$</td>
+<td align="center">自变量</td>
+</tr>
+<tr>
+<td align="center">f</td>
+<td align="center">因变量</td>
+</tr>
+<tr>
+<td align="center">$\eta$</td>
+<td align="center"><strong>学习率</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li>学习率：更新参数<ul>
+<li>过大：容易发散</li>
+<li>过小：迭代次数太多</li>
+</ul>
+</li>
+</ul>
+<h4 id="神经网络的梯度"><a href="#神经网络的梯度" class="headerlink" title="神经网络的梯度"></a>神经网络的梯度</h4><ul>
+<li>每个权重是自变量、损失函数是因变量</li>
+</ul>
+<h3 id="学习算法的实现"><a href="#学习算法的实现" class="headerlink" title="学习算法的实现"></a>学习算法的实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[mini-batch]</span><br><span class="line">A--&gt;B[计算梯度]</span><br><span class="line">B--&gt;C[更新参数]</span><br><span class="line">C--&gt;A</span><br><span class="line">C--&gt;D[最优权重]</span><br></pre></td></tr></table></figure>
+
+<h4 id="两层神经网络的类"><a href="#两层神经网络的类" class="headerlink" title="两层神经网络的类"></a>两层神经网络的类</h4><ul>
+<li>变量：权重、偏执、梯度</li>
+</ul>
+<ul>
+<li>方法：初始化、前向处理、计算损失函数、计算识别精度、计算梯度（还包括高速版）</li>
+</ul>
+<h4 id="mini-batch的实现"><a href="#mini-batch的实现" class="headerlink" title="mini-batch的实现"></a>mini-batch的实现</h4><ul>
+<li>代码略</li>
+</ul>
+<blockquote>
+<p>记录学习过程、观察损失函数的值是否在下降，来确定是否逐渐拟合</p>
+</blockquote>
+<h4 id="基于测试数据的评价"><a href="#基于测试数据的评价" class="headerlink" title="基于测试数据的评价"></a>基于测试数据的评价</h4><ul>
+<li><p>检测泛化能力</p>
+</li>
+<li><p><strong>epoch</strong>：单位。一个epoch表示所有数据均被学习过一次。例如 epoch=10000（总数据量）/ 100（mini-batch所含数据量）=100</p>
+</li>
+<li><p>过拟合的判断：若对训练数据和测试数据的识别精度差别不大，则没有发生过拟合</p>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="GHB">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="tags"/>
+  <meta property="og:title" content="感知机"/>
   <meta property="og:description" content="Welcome to GHB&#39;s blog." />
   <meta property="og:site_name" content="GHBのBlog"/>
   <meta property="og:type" content="article" />
@@ -47,7 +47,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">tags</p>
+          <p class="title">感知机</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -111,16 +111,66 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2020-03-06</span>
+            <span class="date">2021-01-30</span>
             <span class="time">15:00:34</span>
           </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/Deep-Learning/">Deep Learning</a>
+</span>
           
         </div>
         <!-- Tags -->
         
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/note/">#note</a>
+
+
+          </div>
+        
         <!-- Post Main Content -->
         <div class="post-content">
-          
+          <p>关于斋藤康毅《深度学习入门》感知机的读书笔记。</p>
+<p>感知机是学习神经网络的基础</p>
+<a id="more"></a>
+
+<h2 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h2><h3 id="基本模型"><a href="#基本模型" class="headerlink" title="基本模型"></a>基本模型</h3><ul>
+<li>感知机：多个输入、一个输出</li>
+<li>权重 $\omega$</li>
+<li>阈值 $\theta$（类比神经元）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A(X1)--w1--&gt;B(y)</span><br><span class="line">C(X2)--w2--&gt;B</span><br></pre></td></tr></table></figure>
+
+<h3 id="简单逻辑电路"><a href="#简单逻辑电路" class="headerlink" title="简单逻辑电路"></a>简单逻辑电路</h3><h4 id="与门"><a href="#与门" class="headerlink" title="与门"></a>与门</h4><ul>
+<li>真值表</li>
+<li>参数的选择</li>
+</ul>
+<h4 id="与非门、或门"><a href="#与非门、或门" class="headerlink" title="与非门、或门"></a>与非门、或门</h4><ul>
+<li>同上</li>
+</ul>
+<h3 id="感知机实现"><a href="#感知机实现" class="headerlink" title="感知机实现"></a>感知机实现</h3><p>通过调整参数可以实现不同的门（Python代码实现）</p>
+<h4 id="导入权重和偏置"><a href="#导入权重和偏置" class="headerlink" title="导入权重和偏置"></a>导入权重和偏置</h4><ul>
+<li>偏置 b：$\theta = -b$ 调整激活容易程度、也可以用于把0变为阈值</li>
+</ul>
+<h3 id="异或门"><a href="#异或门" class="headerlink" title="异或门"></a>异或门</h3><p>异或门（XOR） ：不同是为1</p>
+<ul>
+<li>图形表示理解</li>
+<li>单层感知机无法实现（异或门非线性）</li>
+</ul>
+<h4 id="多层感知机"><a href="#多层感知机" class="headerlink" title="多层感知机"></a>多层感知机</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A(x1)--&gt;B(?)</span><br><span class="line">A--&gt;C(?)</span><br><span class="line">D(X2)--&gt;B</span><br><span class="line">D--&gt;C</span><br><span class="line">B--&gt;E(?)</span><br><span class="line">C--&gt;E</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>“？”处用 {与门、与非门、或门}组合代替即可实现异或门</p>
+</li>
+<li><p>代码实现</p>
+</li>
+</ul>
+<p><strong>计算机中的复杂电路也可以用多层感知机实现</strong></p>
+
         </div>
       </div>
     </div>

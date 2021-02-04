@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="GHB">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="神经网络"/>
+  <meta property="og:description" content="Welcome to GHB&#39;s blog." />
+  <meta property="og:site_name" content="GHBのBlog"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="GHBのBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>GHBのBlog</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">神经网络</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/Ether-Fish" target="_blank" rel="noopener">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:3052829319@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/text-t">
+                  
+                  text
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By GHB</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2021-02-01</span>
+            <span class="time">15:00:34</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/Deep-Learning/">Deep Learning</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/note/">#note</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>关于斋藤康毅《深度学习入门》的读书笔记。神经网络的出现解决了感知机中无法确定权重的困境</p>
+<a id="more"></a>
+
+<h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><h3 id="感知机到神经网络"><a href="#感知机到神经网络" class="headerlink" title="感知机到神经网络"></a>感知机到神经网络</h3><h4 id="神经网络的例子"><a href="#神经网络的例子" class="headerlink" title="神经网络的例子"></a>神经网络的例子</h4><ul>
+<li>输入层（0层）—中间层（1、2、3…n-1层,隐藏层）—输出层（n层）<ul>
+<li>n-1层有权重，n-1层网络</li>
+</ul>
+</li>
+</ul>
+<h4 id="复习感知机"><a href="#复习感知机" class="headerlink" title="复习感知机"></a>复习感知机</h4><ul>
+<li>偏置的图形表示</li>
+</ul>
+<h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><ul>
+<li>确定如何来激活输入信号的总和——连接感知机和神经网络</li>
+<li>阶跃函数：阈值</li>
+</ul>
+<h4 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h4><p>$$<br>h(x)=\frac{1}{1 + \exp(-x)}<br>$$</p>
+<ul>
+<li>神经网络中经常使用的函数，和感知机的主要区别</li>
+</ul>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><ul>
+<li>实现对Numpy的支持：<code>astype()</code></li>
+</ul>
+<h4 id="两个函数的比较"><a href="#两个函数的比较" class="headerlink" title="两个函数的比较"></a>两个函数的比较</h4><ul>
+<li>平滑性<ul>
+<li>返回值</li>
+</ul>
+</li>
+<li>形状相似</li>
+</ul>
+<h4 id="非线性函数"><a href="#非线性函数" class="headerlink" title="非线性函数"></a>非线性函数</h4><ul>
+<li>是否为一条直线</li>
+<li>神经网络的激活函数必须是非线性的——否则层数没有意义</li>
+<li>多层线性可归化为单层</li>
+</ul>
+<h4 id="ReLU函数"><a href="#ReLU函数" class="headerlink" title="ReLU函数"></a>ReLU函数</h4><p>$$<br>h(x)=<br>\left{<br>    \begin{array}{lr}<br>        x &amp; (x&gt;0) \<br>        0 &amp; (x\leq0)<br>    \end{array}<br>\right.<br>$$</p>
+<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><ul>
+<li><p>点乘</p>
+</li>
+<li><p>符号含义<br>$$<br>W^{(1)}_{12}<br>$$<br>同普通矩阵的行列不同，其实我觉得普通的还好一点</p>
+</li>
+</ul>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><ul>
+<li>神经网路的前向传播</li>
+</ul>
+<h3 id="输出层设计"><a href="#输出层设计" class="headerlink" title="输出层设计"></a>输出层设计</h3><ul>
+<li>回归问题：恒等函数</li>
+<li>分类问题：softmax函数</li>
+</ul>
+<h4 id="恒等函数和softmax函数"><a href="#恒等函数和softmax函数" class="headerlink" title="恒等函数和softmax函数"></a>恒等函数和softmax函数</h4><h5 id="恒等函数"><a href="#恒等函数" class="headerlink" title="恒等函数"></a>恒等函数</h5><h5 id="softmax函数"><a href="#softmax函数" class="headerlink" title="softmax函数"></a>softmax函数</h5><p>$$<br>y_k=\frac{\exp(a_k)}{\sum\limits^n_{i=1}\exp(a_i)}<br>$$</p>
+<ul>
+<li>输出和输入 每一个两两相连</li>
+</ul>
+<ul>
+<li>溢出对策<ul>
+<li>分子分母同乘常数==》C’=log C</li>
+<li>常数 C’ 大小可取数据中最大值</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>特征：<ul>
+<li>归一化——概率</li>
+<li>不改变原来的大小关系</li>
+</ul>
+</li>
+</ul>
+<h4 id="输出层的神经元数量"><a href="#输出层的神经元数量" class="headerlink" title="输出层的神经元数量"></a>输出层的神经元数量</h4><ul>
+<li>分类问题——根据分类的类别数量确定</li>
+</ul>
+<h3 id="识别手写数字"><a href="#识别手写数字" class="headerlink" title="识别手写数字"></a>识别手写数字</h3><h4 id="MINIST数据集"><a href="#MINIST数据集" class="headerlink" title="MINIST数据集"></a>MINIST数据集</h4><h4 id="神经网络推理处理"><a href="#神经网络推理处理" class="headerlink" title="神经网络推理处理"></a>神经网络推理处理</h4><ul>
+<li>正规化：把数据限定到某个范围</li>
+<li>预处理：对输入数据进行某种既定的转换</li>
+</ul>
+<h4 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h4><ul>
+<li>大多数处理数值的计算优化了处理大型数组运算==》极少时间</li>
+<li>同时可以减小总线负荷</li>
+</ul>
+<blockquote>
+<p>文中没有给出具体训练的过程，但是给出了通过已知权重和偏置对实现对手写数字的检测</p>
+</blockquote>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
