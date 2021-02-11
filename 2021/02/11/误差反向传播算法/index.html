@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="GHB">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="误差反向传播法"/>
+  <meta property="og:description" content="Welcome to GHB&#39;s blog." />
+  <meta property="og:site_name" content="GHBのBlog"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="GHBのBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>GHBのBlog</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">误差反向传播法</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/Ether-Fish" target="_blank" rel="noopener">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:3052829319@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/text-t">
+                  
+                  text
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By GHB</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2021-02-11</span>
+            <span class="time">20:13:44</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/Deep-Learning/">Deep Learning</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/note/">#note</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>关于斋藤康毅《深度学习入门》感知机的读书笔记。</p>
+<a id="more"></a>
+
+<h2 id="误差返向传播法"><a href="#误差返向传播法" class="headerlink" title="误差返向传播法"></a>误差返向传播法</h2><p>作者认为的理解方式：</p>
+<ul>
+<li>数学式—严密、简洁，合理但有时候忽略根本，只顾堆砌式子</li>
+<li>计算图—直观理解</li>
+</ul>
+<h3 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h3><p>组成： 节点和边</p>
+<h4 id="用计算图求解"><a href="#用计算图求解" class="headerlink" title="用计算图求解"></a>用计算图求解</h4><ul>
+<li><p>买苹果和句子的图</p>
+<ul>
+<li>节点是计算的内容</li>
+</ul>
+</li>
+<li><p><strong>正向传播</strong>：正向 从左向右</p>
+</li>
+<li><p><strong>反向传播</strong> </p>
+</li>
+<li><p><strong>局部计算</strong>：忽略的复杂的中间过程</p>
+</li>
+</ul>
+<h4 id="计算图的意义"><a href="#计算图的意义" class="headerlink" title="计算图的意义"></a>计算图的意义</h4><ol>
+<li>简单理解、完备表示</li>
+<li>能够地利用反向传播高效计算导数</li>
+</ol>
+<h3 id="链式法则"><a href="#链式法则" class="headerlink" title="链式法则"></a>链式法则</h3><p>其实就是复合函数的那个</p>
+<h4 id="计算图的反向传播"><a href="#计算图的反向传播" class="headerlink" title="计算图的反向传播"></a>计算图的反向传播</h4><p>从右向左，乘上局部导数</p>
+<h4 id="链式法则和计算图"><a href="#链式法则和计算图" class="headerlink" title="链式法则和计算图"></a>链式法则和计算图</h4><h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><h4 id="加法节点的反向传播"><a href="#加法节点的反向传播" class="headerlink" title="加法节点的反向传播"></a>加法节点的反向传播</h4><h4 id="乘法节点的反向传播"><a href="#乘法节点的反向传播" class="headerlink" title="乘法节点的反向传播"></a>乘法节点的反向传播</h4><h3 id="简单层的实现"><a href="#简单层的实现" class="headerlink" title="简单层的实现"></a>简单层的实现</h3><p>把构架脑神经网络的“层”实现为一个类</p>
+<ul>
+<li>层： <ul>
+<li>乘法层（MulLayer）</li>
+<li>加法层（AddLayer）</li>
+</ul>
+</li>
+</ul>
+<h4 id="乘法层的实现"><a href="#乘法层的实现" class="headerlink" title="乘法层的实现"></a>乘法层的实现</h4><ul>
+<li>forward()</li>
+<li>backward()</li>
+</ul>
+<blockquote>
+<p>计算图的节点对应一个函数，所以多个输入，一个输出，所以设计正反向传播的时候输出的变量格式个数不同</p>
+</blockquote>
+<h3 id="激活函数层的实现"><a href="#激活函数层的实现" class="headerlink" title="激活函数层的实现"></a>激活函数层的实现</h3><p>激活函数</p>
+<h4 id="ReLU层"><a href="#ReLU层" class="headerlink" title="ReLU层"></a>ReLU层</h4><ul>
+<li>函数表达式==》函数的导数（自变量的划分）</li>
+<li>mask层</li>
+</ul>
+<h3 id="Sigmoid层"><a href="#Sigmoid层" class="headerlink" title="Sigmoid层"></a>Sigmoid层</h3><ul>
+<li>分解<ul>
+<li>从大到小 / 、exp 、+ </li>
+</ul>
+</li>
+<li>合并</li>
+</ul>
+<h3 id="Affine-Softmax层"><a href="#Affine-Softmax层" class="headerlink" title="Affine/Softmax层"></a>Affine/Softmax层</h3><h4 id="Affine层"><a href="#Affine层" class="headerlink" title="Affine层"></a>Affine层</h4><ul>
+<li><p>矩阵的乘积运算</p>
+<ul>
+<li>”仿射变换“</li>
+<li>Affine层</li>
+</ul>
+</li>
+<li><p><strong>以矩阵为对象的反向传播</strong>： 注意矩阵的形状要符合运算规则<br>$$<br>\frac{\part L}{\part X} = \frac{\part L}{\part Y} · W^T\ \frac{\part L}{\part W} = X^T·\frac{\part L}{\part Y}<br>$$</p>
+</li>
+</ul>
+<h4 id="批版本的-Affine-层"><a href="#批版本的-Affine-层" class="headerlink" title="批版本的 Affine 层"></a>批版本的 Affine 层</h4><ul>
+<li>各个数据的反向传播的值汇总为偏置的元素（因为正向计算的时候是累加）</li>
+</ul>
+<h4 id="Soft-with-Loss"><a href="#Soft-with-Loss" class="headerlink" title="Soft-with-Loss"></a>Soft-with-Loss</h4><ul>
+<li><p>softmax 函数 和 交叉熵误差</p>
+</li>
+<li><p><strong>T-Y</strong> ==&gt; 交叉熵函数、恒等函数的设计来源</p>
+</li>
+<li><p>反向传递一个较<strong>“大”</strong>的误差</p>
+</li>
+</ul>
+<h3 id="误差反向传播法"><a href="#误差反向传播法" class="headerlink" title="误差反向传播法"></a>误差反向传播法</h3><h4 id="对应神经网络的实现"><a href="#对应神经网络的实现" class="headerlink" title="对应神经网络的实现"></a>对应神经网络的实现</h4><ul>
+<li>代码实现<ul>
+<li>将神经网络的层保存在 一个有序字典中，</li>
+</ul>
+</li>
+</ul>
+<h4 id="梯度确认"><a href="#梯度确认" class="headerlink" title="梯度确认"></a>梯度确认</h4><ul>
+<li>求梯度<ul>
+<li>数值微分：简单却计算量大、不易出错</li>
+<li>误差反向：高效但实现复杂、易错</li>
+</ul>
+</li>
+<li>梯度确认： 确认误差反向与数值微分结果一致<ul>
+<li>求各个权重参数对应元素差的绝对值的平均值</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
